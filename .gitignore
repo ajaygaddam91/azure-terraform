@@ -1,5 +1,4 @@
 ### Terraform ###
-### Terraform ###
 .terraform/
 **/.terraform/
 *.tfstate
@@ -14,8 +13,9 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
-#Virtual machine/.terraform/
 *.exe
+#Terraform lock file
+.terraform.lock.hcl
 
 ### VisualStudioCode ###
 .vscode/*
