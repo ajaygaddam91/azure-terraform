@@ -15,7 +15,7 @@ override.tf.json
 terraform.rc
 *.exe
 #Terraform lock file
-.terraform.lock.hcl
+**/.terraform.lock.hcl
 
 ### VisualStudioCode ###
 .vscode/*
