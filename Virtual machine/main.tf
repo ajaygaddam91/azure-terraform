@@ -1,0 +1,30 @@
+resource "azurerm_virtual_machine" "vm_instance"{
+    name=var.vm.name
+    location=data.azurerm_resource_group.rg_detail.location
+    resource_group_name=data.azurerm_resource_group.rg_detail.name
+    network_interface_ids=[data.azurerm_network_interface.main.id]
+    vm_size=var.vm.size
+    storage_image_reference{
+        publisher=var.vm.publisher
+        offer=var.vm.offer
+        sku=var.vm.sku
+        version=var.vm.version
+    }
+    storage_os_disk{
+        name=var.vm.name
+        caching=var.vm.caching
+        create_option=var.vm.create_option
+        managed_disk_type=var.vm.managed_disk_type        
+    }
+    os_profile{
+        computer_name=var.vm.computer_name
+        admin_username=var.vm.admin_username
+        admin_password=var.vm.admin_password
+    }
+    os_profile_windows_config{
+        provision_vm_agent=true
+        enable_automatic_upgrades = true
+    }
+    tags=merge(var.vm.vm_tags,
+        {Name=var.vm_env_tags})
+}
